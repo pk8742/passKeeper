@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>passKeeper</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <script src="https://use.fontawesome.com/36e6971a0e.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark justify-content-between">
+  <!-- Brand -->
+  <div class="col-lg-4 col-md-4 col-sm-12 col-12">
+  	<a class="navbar-brand" href="{% url 'index' %}" >pass<span>Keeper</span></a>
+  </div>
+
+
+  <!-- Links -->
+  <div class="navbar col-lg-6 col-md-6 col-sm-12 col-12">
+  	<ul class="navbar-nav">
+	    <li class="nav-item">
+	      <a class="active nav-link" href="#"><i class="fa fa-fw fa-home"></i> Home</a>
+	    </li>
+	    <li class="nav-item">
+	      <a href="#" class="nav-link"><i class="fa fa-fw fa-search"></i> Search</a>
+	    </li>
+	    <li class="nav-item">
+	      <a href="#" class="nav-link"><i class="fa fa-fw fa-envelope"></i> Contact</a>
+	    </li>
+	</ul>
+</div>
+<div class="navbar col-lg-2 col-md-2 col-sm-12 col-12">
+  	<ul class="navbar-nav navbar-right">
+	    <li class="nav-item">
+	      <a class="nav-link" href="{% url 'register_page' %}"><i class="fa fa-user-plus" aria-hidden="true"></i> Sign Up</a>
+	    </li>
+	    <li class="nav-item">
+	      <a class="nav-link" href="{% url 'login_page' %}"><i class="fa fa-sign-in" aria-hidden="true"></i> Login</a>
+	    </li>
+	</ul>
+</div>
+</nav>
+<br>
+
+<div class="container">
+  <h1>Welcode to the passKeeper</h1>
+  <p><b>passKeeper</b> is a web application written in python to store users password related to different websites.</p>
+  <br>
+  <a class="btn btn-dark" href="{% url 'insert_page' %}">Go to insert_page</a>
+</div>
+
+</body>
+</html>
