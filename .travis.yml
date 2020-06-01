@@ -16,6 +16,7 @@ install:
   - pip install -r requirements.txt
 
 before_script:
+  - sudo su postgres
   - psql -c "CREATE DATABASE passKeeper;" -U postgres
 
 script:
