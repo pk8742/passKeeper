@@ -93,7 +93,7 @@ if 'TRAVIS' in os.environ:
             'USER':     'postgres',
             'PASSWORD': '',
             'HOST':     'localhost',
-            'PORT':     '',
+            'PORT':     5432,
         }
     }
 
