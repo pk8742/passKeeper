@@ -63,6 +63,7 @@
       <th scope="col">UserInfo</th>
       <th scope="col">Password</th>
       <th scope="col">Creation date</th>
+      <th scope="col">Operations</th>
     </tr>
   </thead>
   <tbody>
@@ -73,6 +74,9 @@
       <td>{{data.userInfo}}</td>
       <td>{{data.password}}</td>
       <td>{{data.dateTime}}</td>
+      <td><a class="btn btn-success btn-sm" href="{% url 'update_page' data.id %}"  data-toggle="tooltip" title="Update this entry"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+</a>&nbsp;&nbsp; <a class="btn btn-danger btn-sm" href="{% url 'delete' data.id %}"  data-toggle="tooltip" data-placement="top" title="Delete this entry"><i class="fa fa-trash" aria-hidden="true"></i>
+</a></td>
     </tr>
     {% empty %}
     <p class="alert alert-dark">no data available for <b>{{username}}</b></p>

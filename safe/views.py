@@ -14,7 +14,9 @@ def index(request):
 def userPage(request):
     username = request.session["username"]
     try:
-        data = Safe.objects.filter(username=username).all()
+        data = Safe.objects.filter(username=username).order_by('id').all()
+        # for descending order
+        # data = Safe.objects.filter(username=username).order_by('id').reverse().all()
     except Safe.DoesNotExist:
         data = None
 
@@ -64,3 +66,38 @@ def insert(request):
             "msg": "Invalid request method"
         }
         return render(request,"safe/insert.html",context)
+
+# adding features such as update & delete
+def update_page(request,field_id):
+    username = request.session["username"]
+    try:
+        data = Safe.objects.get(pk=field_id)
+    except Safe.DoesNotExist:
+        data = None
+    context = {
+        "data": data,
+        "username": username
+    }
+    return render(request,"safe/update.html",context)
+
+def update(request,field_id):
+    if request.method == 'POST':
+        username = request.session["username"]
+        website = request.POST.get('website')
+        userInfo = request.POST.get('userInfo')
+        password = request.POST.get('password')
+        check = request.POST.get('check')
+        dateTime = datetime.now()
+
+        if check == "on":
+            Safe.objects.filter(pk=field_id).update(username=username,website=website,userInfo=userInfo,password=password,dateTime=dateTime)
+            context = {
+                "msg": "Entry updated successfully"
+            }
+            return redirect('userPage')
+
+def delete(request,field_id):
+    obj = Safe.objects.get(pk=field_id)
+    obj.delete()
+
+    return redirect('userPage')

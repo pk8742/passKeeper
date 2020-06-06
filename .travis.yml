@@ -1,25 +1,37 @@
 language: python
 
 python:
-  - "3.8.2"
+- 3.8.2
 
 services:
-  - postgresql
+- postgresql
 
 addons:
   postgresql: "12"
 
 env:
-  - DJANGO=3.0.6 DB=postgres
+- DJANGO=3.0.6 DB=postgres
+#  global:
+#  - PGPORT=5433
+
+before_install:
+- export DJANGO_SETTINGS_MODULE=ledenbestand.settings.local
 
 install:
-  - pip install -r requirements.txt
+- pip install -r travis/requirements.txt
 
 before_script:
-  - sudo su postgres
-  - psql -c "CREATE DATABASE passKeeper;" -U postgres
+# The default user for accessing the local PostgreSQL server is postgres with a blank password.
+- psql -c 'create database passKeeper;' -U postgres
 
 script:
-  - python3 -m venv venv
-  - source venv/bin/activate
-  - python3 manage.py runserver
+- python3 -m venv venv
+- source venv/bin/activate
+- python3 manage.py runserver
+
+# notifications:
+#   email:
+#     recipients:
+#       - random@email.com
+#     on_success: never
+#     on_failure: always
