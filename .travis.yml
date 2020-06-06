@@ -14,11 +14,8 @@ env:
 #  global:
 #  - PGPORT=5433
 
-before_install:
-- export DJANGO_SETTINGS_MODULE=ledenbestand.settings.local
-
 install:
-- pip install -r travis/requirements.txt
+- pip install -r requirements.txt
 
 before_script:
 # The default user for accessing the local PostgreSQL server is postgres with a blank password.
